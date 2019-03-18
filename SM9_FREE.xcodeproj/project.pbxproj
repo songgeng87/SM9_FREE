@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF56EF58223E00F700C5CD3E /* SM9Test.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56EF57223E00F700C5CD3E /* SM9Test.c */; };
+		FF56F02E223E012900C5CD3E /* sm_r-ate.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F019223E012800C5CD3E /* sm_r-ate.c */; };
+		FF56F02F223E012900C5CD3E /* sm3.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F01C223E012800C5CD3E /* sm3.c */; };
+		FF56F030223E012900C5CD3E /* sm9_setup.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F01D223E012800C5CD3E /* sm9_setup.c */; };
+		FF56F033223E012900C5CD3E /* sm9_keyexchange.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F022223E012800C5CD3E /* sm9_keyexchange.c */; };
+		FF56F034223E012900C5CD3E /* sm9_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F023223E012800C5CD3E /* sm9_utils.c */; };
+		FF56F035223E012900C5CD3E /* smzzn12.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F024223E012800C5CD3E /* smzzn12.c */; };
+		FF56F036223E012900C5CD3E /* print_out.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F025223E012800C5CD3E /* print_out.c */; };
+		FF56F038223E012900C5CD3E /* sm9_encrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F029223E012800C5CD3E /* sm9_encrypt.c */; };
+		FF56F039223E012900C5CD3E /* sm9_signature.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F02A223E012800C5CD3E /* sm9_signature.c */; };
+		FF56F03A223E012900C5CD3E /* sm4.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F02C223E012900C5CD3E /* sm4.c */; };
+		FF56F04D223E013700C5CD3E /* mrecn2.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F03B223E013700C5CD3E /* mrecn2.c */; };
+		FF56F04E223E013700C5CD3E /* mrbits.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F03C223E013700C5CD3E /* mrbits.c */; };
+		FF56F04F223E013700C5CD3E /* mrsroot.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F03E223E013700C5CD3E /* mrsroot.c */; };
+		FF56F050223E013700C5CD3E /* mrzzn2.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F03F223E013700C5CD3E /* mrzzn2.c */; };
+		FF56F051223E013700C5CD3E /* mrxgcd.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F040223E013700C5CD3E /* mrxgcd.c */; };
+		FF56F052223E013700C5CD3E /* mrarth1.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F041223E013700C5CD3E /* mrarth1.c */; };
+		FF56F053223E013700C5CD3E /* mralloc.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F042223E013700C5CD3E /* mralloc.c */; };
+		FF56F054223E013700C5CD3E /* mrcore.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F044223E013700C5CD3E /* mrcore.c */; };
+		FF56F055223E013700C5CD3E /* mrzzn4.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F045223E013700C5CD3E /* mrzzn4.c */; };
+		FF56F056223E013700C5CD3E /* mrmuldv.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F046223E013700C5CD3E /* mrmuldv.c */; };
+		FF56F057223E013700C5CD3E /* mrmonty.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F047223E013700C5CD3E /* mrmonty.c */; };
+		FF56F058223E013700C5CD3E /* mrjack.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F048223E013700C5CD3E /* mrjack.c */; };
+		FF56F059223E013700C5CD3E /* mrarth0.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F049223E013700C5CD3E /* mrarth0.c */; };
+		FF56F05A223E013700C5CD3E /* mrarth2.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F04A223E013700C5CD3E /* mrarth2.c */; };
+		FF56F05B223E013700C5CD3E /* mrcurve.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F04B223E013700C5CD3E /* mrcurve.c */; };
+		FF56F05C223E013700C5CD3E /* mrlucas.c in Sources */ = {isa = PBXBuildFile; fileRef = FF56F04C223E013700C5CD3E /* mrlucas.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF56EF45223E004500C5CD3E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FF56EF47223E004500C5CD3E /* SM9_FREE */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SM9_FREE; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF56EF57223E00F700C5CD3E /* SM9Test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SM9Test.c; sourceTree = "<group>"; };
+		FF56F019223E012800C5CD3E /* sm_r-ate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "sm_r-ate.c"; sourceTree = "<group>"; };
+		FF56F01A223E012800C5CD3E /* sm9_algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm9_algorithm.h; sourceTree = "<group>"; };
+		FF56F01C223E012800C5CD3E /* sm3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm3.c; sourceTree = "<group>"; };
+		FF56F01D223E012800C5CD3E /* sm9_setup.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm9_setup.c; sourceTree = "<group>"; };
+		FF56F01F223E012800C5CD3E /* sm4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm4.h; sourceTree = "<group>"; };
+		FF56F022223E012800C5CD3E /* sm9_keyexchange.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm9_keyexchange.c; sourceTree = "<group>"; };
+		FF56F023223E012800C5CD3E /* sm9_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm9_utils.c; sourceTree = "<group>"; };
+		FF56F024223E012800C5CD3E /* smzzn12.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = smzzn12.c; sourceTree = "<group>"; };
+		FF56F025223E012800C5CD3E /* print_out.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = print_out.c; sourceTree = "<group>"; };
+		FF56F027223E012800C5CD3E /* print_out.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = print_out.h; sourceTree = "<group>"; };
+		FF56F028223E012800C5CD3E /* sm3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm3.h; sourceTree = "<group>"; };
+		FF56F029223E012800C5CD3E /* sm9_encrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm9_encrypt.c; sourceTree = "<group>"; };
+		FF56F02A223E012800C5CD3E /* sm9_signature.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm9_signature.c; sourceTree = "<group>"; };
+		FF56F02B223E012900C5CD3E /* smzzn12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = smzzn12.h; sourceTree = "<group>"; };
+		FF56F02C223E012900C5CD3E /* sm4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sm4.c; sourceTree = "<group>"; };
+		FF56F02D223E012900C5CD3E /* sm9_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sm9_utils.h; sourceTree = "<group>"; };
+		FF56F03B223E013700C5CD3E /* mrecn2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrecn2.c; sourceTree = "<group>"; };
+		FF56F03C223E013700C5CD3E /* mrbits.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrbits.c; sourceTree = "<group>"; };
+		FF56F03D223E013700C5CD3E /* miracl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = miracl.h; sourceTree = "<group>"; };
+		FF56F03E223E013700C5CD3E /* mrsroot.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrsroot.c; sourceTree = "<group>"; };
+		FF56F03F223E013700C5CD3E /* mrzzn2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrzzn2.c; sourceTree = "<group>"; };
+		FF56F040223E013700C5CD3E /* mrxgcd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrxgcd.c; sourceTree = "<group>"; };
+		FF56F041223E013700C5CD3E /* mrarth1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrarth1.c; sourceTree = "<group>"; };
+		FF56F042223E013700C5CD3E /* mralloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mralloc.c; sourceTree = "<group>"; };
+		FF56F043223E013700C5CD3E /* mirdef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mirdef.h; sourceTree = "<group>"; };
+		FF56F044223E013700C5CD3E /* mrcore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrcore.c; sourceTree = "<group>"; };
+		FF56F045223E013700C5CD3E /* mrzzn4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrzzn4.c; sourceTree = "<group>"; };
+		FF56F046223E013700C5CD3E /* mrmuldv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrmuldv.c; sourceTree = "<group>"; };
+		FF56F047223E013700C5CD3E /* mrmonty.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrmonty.c; sourceTree = "<group>"; };
+		FF56F048223E013700C5CD3E /* mrjack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrjack.c; sourceTree = "<group>"; };
+		FF56F049223E013700C5CD3E /* mrarth0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrarth0.c; sourceTree = "<group>"; };
+		FF56F04A223E013700C5CD3E /* mrarth2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrarth2.c; sourceTree = "<group>"; };
+		FF56F04B223E013700C5CD3E /* mrcurve.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrcurve.c; sourceTree = "<group>"; };
+		FF56F04C223E013700C5CD3E /* mrlucas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrlucas.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF56EF44223E004500C5CD3E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF56EF3E223E004500C5CD3E = {
+			isa = PBXGroup;
+			children = (
+				FF56EF49223E004500C5CD3E /* SM9_FREE */,
+				FF56EF48223E004500C5CD3E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF56EF48223E004500C5CD3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF56EF47223E004500C5CD3E /* SM9_FREE */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF56EF49223E004500C5CD3E /* SM9_FREE */ = {
+			isa = PBXGroup;
+			children = (
+				FF56EF57223E00F700C5CD3E /* SM9Test.c */,
+				FF56EF52223E005900C5CD3E /* sm9 */,
+				FF56EF51223E005100C5CD3E /* miracl */,
+			);
+			path = SM9_FREE;
+			sourceTree = "<group>";
+		};
+		FF56EF51223E005100C5CD3E /* miracl */ = {
+			isa = PBXGroup;
+			children = (
+				FF56F03D223E013700C5CD3E /* miracl.h */,
+				FF56F043223E013700C5CD3E /* mirdef.h */,
+				FF56F042223E013700C5CD3E /* mralloc.c */,
+				FF56F049223E013700C5CD3E /* mrarth0.c */,
+				FF56F041223E013700C5CD3E /* mrarth1.c */,
+				FF56F04A223E013700C5CD3E /* mrarth2.c */,
+				FF56F03C223E013700C5CD3E /* mrbits.c */,
+				FF56F044223E013700C5CD3E /* mrcore.c */,
+				FF56F04B223E013700C5CD3E /* mrcurve.c */,
+				FF56F03B223E013700C5CD3E /* mrecn2.c */,
+				FF56F048223E013700C5CD3E /* mrjack.c */,
+				FF56F04C223E013700C5CD3E /* mrlucas.c */,
+				FF56F047223E013700C5CD3E /* mrmonty.c */,
+				FF56F046223E013700C5CD3E /* mrmuldv.c */,
+				FF56F03E223E013700C5CD3E /* mrsroot.c */,
+				FF56F040223E013700C5CD3E /* mrxgcd.c */,
+				FF56F03F223E013700C5CD3E /* mrzzn2.c */,
+				FF56F045223E013700C5CD3E /* mrzzn4.c */,
+			);
+			path = miracl;
+			sourceTree = "<group>";
+		};
+		FF56EF52223E005900C5CD3E /* sm9 */ = {
+			isa = PBXGroup;
+			children = (
+				FF56F025223E012800C5CD3E /* print_out.c */,
+				FF56F027223E012800C5CD3E /* print_out.h */,
+				FF56F019223E012800C5CD3E /* sm_r-ate.c */,
+				FF56F01C223E012800C5CD3E /* sm3.c */,
+				FF56F028223E012800C5CD3E /* sm3.h */,
+				FF56F02C223E012900C5CD3E /* sm4.c */,
+				FF56F01F223E012800C5CD3E /* sm4.h */,
+				FF56F01A223E012800C5CD3E /* sm9_algorithm.h */,
+				FF56F029223E012800C5CD3E /* sm9_encrypt.c */,
+				FF56F022223E012800C5CD3E /* sm9_keyexchange.c */,
+				FF56F01D223E012800C5CD3E /* sm9_setup.c */,
+				FF56F02A223E012800C5CD3E /* sm9_signature.c */,
+				FF56F023223E012800C5CD3E /* sm9_utils.c */,
+				FF56F02D223E012900C5CD3E /* sm9_utils.h */,
+				FF56F024223E012800C5CD3E /* smzzn12.c */,
+				FF56F02B223E012900C5CD3E /* smzzn12.h */,
+			);
+			path = sm9;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF56EF46223E004500C5CD3E /* SM9_FREE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF56EF4E223E004500C5CD3E /* Build configuration list for PBXNativeTarget "SM9_FREE" */;
+			buildPhases = (
+				FF56EF43223E004500C5CD3E /* Sources */,
+				FF56EF44223E004500C5CD3E /* Frameworks */,
+				FF56EF45223E004500C5CD3E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SM9_FREE;
+			productName = SM9_FREE;
+			productReference = FF56EF47223E004500C5CD3E /* SM9_FREE */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF56EF3F223E004500C5CD3E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "宋赓";
+				TargetAttributes = {
+					FF56EF46223E004500C5CD3E = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = FF56EF42223E004500C5CD3E /* Build configuration list for PBXProject "SM9_FREE" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FF56EF3E223E004500C5CD3E;
+			productRefGroup = FF56EF48223E004500C5CD3E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF56EF46223E004500C5CD3E /* SM9_FREE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF56EF43223E004500C5CD3E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF56F055223E013700C5CD3E /* mrzzn4.c in Sources */,
+				FF56F058223E013700C5CD3E /* mrjack.c in Sources */,
+				FF56EF58223E00F700C5CD3E /* SM9Test.c in Sources */,
+				FF56F053223E013700C5CD3E /* mralloc.c in Sources */,
+				FF56F038223E012900C5CD3E /* sm9_encrypt.c in Sources */,
+				FF56F056223E013700C5CD3E /* mrmuldv.c in Sources */,
+				FF56F030223E012900C5CD3E /* sm9_setup.c in Sources */,
+				FF56F04E223E013700C5CD3E /* mrbits.c in Sources */,
+				FF56F05A223E013700C5CD3E /* mrarth2.c in Sources */,
+				FF56F034223E012900C5CD3E /* sm9_utils.c in Sources */,
+				FF56F02F223E012900C5CD3E /* sm3.c in Sources */,
+				FF56F050223E013700C5CD3E /* mrzzn2.c in Sources */,
+				FF56F054223E013700C5CD3E /* mrcore.c in Sources */,
+				FF56F03A223E012900C5CD3E /* sm4.c in Sources */,
+				FF56F04F223E013700C5CD3E /* mrsroot.c in Sources */,
+				FF56F039223E012900C5CD3E /* sm9_signature.c in Sources */,
+				FF56F04D223E013700C5CD3E /* mrecn2.c in Sources */,
+				FF56F05B223E013700C5CD3E /* mrcurve.c in Sources */,
+				FF56F033223E012900C5CD3E /* sm9_keyexchange.c in Sources */,
+				FF56F035223E012900C5CD3E /* smzzn12.c in Sources */,
+				FF56F036223E012900C5CD3E /* print_out.c in Sources */,
+				FF56F057223E013700C5CD3E /* mrmonty.c in Sources */,
+				FF56F059223E013700C5CD3E /* mrarth0.c in Sources */,
+				FF56F052223E013700C5CD3E /* mrarth1.c in Sources */,
+				FF56F051223E013700C5CD3E /* mrxgcd.c in Sources */,
+				FF56F05C223E013700C5CD3E /* mrlucas.c in Sources */,
+				FF56F02E223E012900C5CD3E /* sm_r-ate.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FF56EF4C223E004500C5CD3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FF56EF4D223E004500C5CD3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FF56EF4F223E004500C5CD3E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFZWN4D9A4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FF56EF50223E004500C5CD3E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MFZWN4D9A4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF56EF42223E004500C5CD3E /* Build configuration list for PBXProject "SM9_FREE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF56EF4C223E004500C5CD3E /* Debug */,
+				FF56EF4D223E004500C5CD3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF56EF4E223E004500C5CD3E /* Build configuration list for PBXNativeTarget "SM9_FREE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF56EF4F223E004500C5CD3E /* Debug */,
+				FF56EF50223E004500C5CD3E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF56EF3F223E004500C5CD3E /* Project object */;
+}
