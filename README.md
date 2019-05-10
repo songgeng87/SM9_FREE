@@ -19,7 +19,9 @@
 # SM9编译测试
 可以直接用XCODE进行编译测试
 
-也可用gcc进行编译（Makefile 待完成）
+也可用gcc进行编译
+make test
+./test
 
 # SM9使用方法
 TODO
