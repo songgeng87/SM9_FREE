@@ -39,7 +39,6 @@ the CertiVox MIRACL Crypto SDK with a closed source product.               *
 
 #include <stdlib.h> 
 #include "miracl.h"
-#include "print_out.h"
 #ifdef MR_COUNT_OPS
 extern int fpmq,fpsq,fpaq; 
 #endif
@@ -315,11 +314,13 @@ fpmq++;
 #endif
             nres_modmult(_MIPP_ x->a,y->a,mr_mip->w1);
             nres_modmult(_MIPP_ x->b,y->b,mr_mip->w2);
+           
             nres_modadd(_MIPP_ x->a,x->b,mr_mip->w5);
             nres_modadd(_MIPP_ y->a,y->b,w->b);
             nres_modmult(_MIPP_ w->b,mr_mip->w5,w->b);
             nres_modsub(_MIPP_ w->b,mr_mip->w1,w->b);
             nres_modsub(_MIPP_ w->b,mr_mip->w2,w->b);
+            
             nres_modsub(_MIPP_ mr_mip->w1,mr_mip->w2,w->a);
             if (mr_mip->qnr==-2)
                 nres_modsub(_MIPP_ w->a,mr_mip->w2,w->a);
