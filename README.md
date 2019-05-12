@@ -20,7 +20,9 @@
 可以直接用XCODE进行编译测试
 
 也可用gcc进行编译
+
 make test
+
 ./test
 
 # SM9使用方法
