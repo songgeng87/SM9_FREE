@@ -7,7 +7,7 @@
 采用C语言编写，可支持X86、X86_64、ARM等多平台编译。
 
 # 源码关系
- [Miracl密码库](https://github.com/miracl/MIRACL)比较庞大，因此只截取出其中最核心的部分，包括大整数运算，Fp，Fp^2，Fp^4域计算以及Fp和Fp^2上椭圆曲线基础预算等功能。
+ [Miracl密码库](https://github.com/miracl/MIRACL)比较庞大，因此只截取出其中最核心的部分，包括大整数运算，Fp，Fp^2，Fp^4域计算以及Fp和Fp^2上椭圆曲线基础计算等功能。
 
 依赖的所有[Miracl密码库](https://github.com/miracl/MIRACL)文件在文件夹 [SM9_FREE/miracl](https://github.com/songgeng87/SM9_FREE/tree/master/SM9_FREE/miracl) 内。
 
