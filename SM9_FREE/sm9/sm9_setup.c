@@ -146,9 +146,9 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(sm9t);
             
             zzn2_kill(_MIPP_ &sm9X);
-            epoint_free(&p1G1);
-            epoint_free(&ppG1);
-            epoint_free(&keG1);
+//            epoint_free(&p1G1);
+//            epoint_free(&ppG1);
+//            epoint_free(&keG1);
             ecn2_kill(_MIPP_ &p2G2);
             ecn2_kill(_MIPP_ &ppG2);
             zzn12_kill(_MIPP_ &gGt);
@@ -181,9 +181,9 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(sm9t);
             
             zzn2_kill(_MIPP_ &sm9X);
-            epoint_free(&p1G1);
-            epoint_free(&ppG1);
-            epoint_free(&keG1);
+//            epoint_free(&p1G1);
+//            epoint_free(&ppG1);
+//            epoint_free(&keG1);
             ecn2_kill(_MIPP_ &p2G2);
             ecn2_kill(_MIPP_ &ppG2);
             zzn12_kill(_MIPP_ &gGt);
@@ -223,9 +223,9 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(sm9t);
             
             zzn2_kill(_MIPP_ &sm9X);
-            epoint_free(&p1G1);
-            epoint_free(&ppG1);
-            epoint_free(&keG1);
+ //           epoint_free(&p1G1);
+ //           epoint_free(&ppG1);
+ //           epoint_free(&keG1);
             ecn2_kill(_MIPP_ &p2G2);
             ecn2_kill(_MIPP_ &ppG2);
             zzn12_kill(_MIPP_ &gGt);
@@ -258,9 +258,9 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(sm9t);
             
             zzn2_kill(_MIPP_ &sm9X);
-            epoint_free(&p1G1);
-            epoint_free(&ppG1);
-            epoint_free(&keG1);
+ //           epoint_free(&p1G1);
+ //           epoint_free(&ppG1);
+ //           epoint_free(&keG1);
             ecn2_kill(_MIPP_ &p2G2);
             ecn2_kill(_MIPP_ &ppG2);
             zzn12_kill(_MIPP_ &gGt);
@@ -286,6 +286,33 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
     CloseMiracl(_MIPPO_);
     sm9init = TRUE;
     return 0;
+}
+
+void SM9_Free(){
+    if (sm9init == FALSE) return;
+    miracl *mr_mip = mr_first_alloc();
+    mirkill(sm9q);
+    mirkill(sm9a);
+    mirkill(sm9b);
+    mirkill(sm9n);
+    mirkill(sm9t);
+    
+    zzn2_kill(_MIPP_ &sm9X);
+ //   epoint_free(&p1G1);
+//    epoint_free(&ppG1);
+//    epoint_free(&keG1);
+    ecn2_kill(_MIPP_ &p2G2);
+    ecn2_kill(_MIPP_ &ppG2);
+    zzn12_kill(_MIPP_ &gGt);
+    zzn12_kill(_MIPP_ &eGt);
+    zzn12_kill(_MIPP_ &kGt);
+    CloseMiracl(_MIPPO_);
+    sm9init = FALSE;
+    sm9sign = FALSE;
+    sm9encrypt = FALSE;
+    sm9keyexchange = FALSE;
+    
+    return;
 }
 
 unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char* y1, unsigned char* y2, unsigned char* gGtchar){
@@ -327,6 +354,7 @@ unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char*
         zzn12_tochar(_MIPP_ &gGt, gc,sm9len);
     }else{
         zzn12_fromchar(_MIPP_ &gGt, gGtchar,sm9len);
+        sm9sign = TRUE;
     }
     mirkill(x);
     mirkill(y);
@@ -335,6 +363,12 @@ unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char*
     CloseMiracl(_MIPPO_);
     return gc;
 }
+
+void SM9_Close_Sign(){
+    sm9init = FALSE;
+}
+
+
 unsigned char* SM9_Set_Encrypt(unsigned char* x, unsigned char* y, unsigned char* eGtchar){
     miracl *mr_mip;
     big a,b;
@@ -363,11 +397,16 @@ unsigned char* SM9_Set_Encrypt(unsigned char* x, unsigned char* y, unsigned char
         zzn12_tochar(_MIPP_ &eGt, gc,sm9len);
     }else{
         zzn12_fromchar(_MIPP_ &eGt, gc,sm9len);
+        sm9encrypt = TRUE;
     }
     mirkill(a);
     mirkill(b);
     CloseMiracl(_MIPPO_);
     return gc;
+}
+
+void SM9_Close_Encrypt(){
+    sm9encrypt = FALSE;
 }
 
 unsigned char* SM9_Set_KeyExchange(unsigned char* x, unsigned char* y,unsigned char* kGtchar){
@@ -396,12 +435,18 @@ unsigned char* SM9_Set_KeyExchange(unsigned char* x, unsigned char* y,unsigned c
         zzn12_tochar(_MIPP_ &kGt, gc,sm9len);
     }else{
         zzn12_fromchar(_MIPP_ &kGt, gc,sm9len);
+        sm9keyexchange = TRUE;
     }
     mirkill(a);
     mirkill(b);
     CloseMiracl(_MIPPO_);
     return gc;
 }
+
+void SM9_Close_KeyExchange(){
+    sm9keyexchange = FALSE;
+}
+
 SM9_MSK SM9_MSK_New(int secLevel,unsigned char* w){
     SM9_MSK msk;
     msk.keylen = secLevel;

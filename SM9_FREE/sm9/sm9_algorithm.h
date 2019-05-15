@@ -140,6 +140,8 @@ typedef struct sm9_sender_st {
 //3 G2生成元配置错误
 int SM9_Init(unsigned int curve, int TWIST_TYPE, unsigned int seclevel,unsigned char* t, unsigned char* q, unsigned char* a, unsigned char* b, unsigned char* n, unsigned char* xp1, unsigned char* yp1, unsigned char* xq1, unsigned char* xq2, unsigned char* yq1, unsigned char* yq2);
 
+//关闭SM9算法，清除缓存
+void SM9_Free();
 
 //初始化sm9签名模块，完成预计算
 //@x1 sm9签名主公钥的x分量1
@@ -152,6 +154,9 @@ int SM9_Init(unsigned int curve, int TWIST_TYPE, unsigned int seclevel,unsigned 
 //可将gc写入文件或数据库，以后从文件或数据库中读取
 unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char* y1, unsigned char* y2, unsigned char* gGtchar);
 
+//关闭sm9签名模块
+void SM9_Close_Sign();
+
 //初始化sm9加密模块，完成预计算
 //@x sm9加密主公钥的x分量
 //@y sm9加密主公钥的y分量
@@ -161,6 +166,8 @@ unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char*
 //可将gc写入文件或数据库，以后从文件或数据库中读取
 unsigned char* SM9_Set_Encrypt(unsigned char* x, unsigned char* y, unsigned char* eGtchar);
 
+//关闭sm9加密模块
+void SM9_Close_Encrypt();
 
 //初始化sm9密钥协商模块，完成预计算
 //@x sm9密钥协商主公钥的x分量
@@ -171,7 +178,8 @@ unsigned char* SM9_Set_Encrypt(unsigned char* x, unsigned char* y, unsigned char
 //可将gc写入文件或数据库，以后从文件或数据库中读取
 unsigned char* SM9_Set_KeyExchange(unsigned char* x, unsigned char* y,unsigned char* kGtchar);
 
-
+//关闭sm9秘钥交换模块
+void SM9_Close_KeyExchange();
 
 //根据密钥字符串w，初始化一个主私钥
 SM9_MSK SM9_MSK_New(int secLevel,unsigned char* w);

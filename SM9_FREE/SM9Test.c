@@ -62,6 +62,8 @@ int main(int argc, char **argv)
     //也可以使用自定义曲线
     //
     SM9_Init(0,0,32,NULL,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL );
+
+    
 // ========================================================
     SM9_MSK msk = SM9_MSK_New(32, cks);  // 申明一个签名主密钥
     SM9_MSPK mspk = SM9_MSPK_New(32);   //申明一个主签名公钥
@@ -69,6 +71,11 @@ int main(int argc, char **argv)
     SM9_GenMSignPubKey(&msk, &mspk);  // 生成签名主公钥
     
     gg = SM9_Set_Sign(mspk.x1, mspk.x2, mspk.y1, mspk.y2, NULL); // 启动签名lib
+    
+    if (gg == NULL){
+        printf("init sign lib error\n");
+        return 1;
+    }
     
     SM9_Set_Sign(NULL, NULL, NULL, NULL, gg);
     
@@ -100,6 +107,11 @@ int main(int argc, char **argv)
     printf("verify %d time is %ld sec\n",TEST, end-start);
  
 //===============independent verify test===============
+    SM9_Free();  //注销SM9
+    
+    //重新启动SM9
+    SM9_Init(0,0,32,NULL,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL );
+    
     SM9_MSPK inmspk = SM9_MSPK_New(32);
     SM9_Sign insign = SM9_Sign_New(32);
     SM9_PK inpk = SM9_PK_New(5, id);
@@ -112,15 +124,20 @@ int main(int argc, char **argv)
     
     gg = SM9_Set_Sign(inmspk.x1, inmspk.x2, inmspk.y1, inmspk.y2, NULL); // 启动签名lib
     
+    if (gg == NULL){
+        printf("init sign lib error\n");
+        return 1;
+    }
+    
     insign.h = h;
     insign.xs = xs;
     insign.ys = ys;
     int inres;
     inres = SM9_Verify(msg, 20, &insign, &inpk, NULL);
     if (inres) {
-        printf("verify error = %d\n",inres);
+        printf("independent verify error = %d\n",inres);
     }else{
-        printf("verify success! \n");
+        printf("independent verify success! \n");
     }
     
 //===============encryption test===============
@@ -128,7 +145,10 @@ int main(int argc, char **argv)
     SM9_MCPK mcpk = SM9_MCPK_New(32);   //申明一个主加密公钥
     SM9_GenMEncryptPubKey(&esk, &mcpk); // 生成加密主公钥
     gg = SM9_Set_Encrypt(mcpk.x, mcpk.y,NULL);  // 启动加密lib
-    
+    if (gg == NULL){
+        printf("init encryption lib error\n");
+        return 1;
+    }
     
     SM9_PK epk = SM9_PK_New(3, eid);   //申明一个加密公钥
     SM9_CSK csk = SM9_CSK_New(32);   //申明一个加密私钥
@@ -159,6 +179,11 @@ int main(int argc, char **argv)
     SM9_GenMKeyExchangePubKey(&ksk, &mkpk); // 生成协商主公钥
     
     gg = SM9_Set_KeyExchange(mkpk.x, mkpk.y,NULL);  // 启动协商lib
+    
+    if (gg == NULL){
+        printf("init keyexchange lib error\n");
+        return 1;
+    }
     
     SM9_PK  apk = SM9_PK_New(5, alice);
     SM9_KSK ask = SM9_KSK_New(32);
