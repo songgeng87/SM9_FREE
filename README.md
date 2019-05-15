@@ -44,7 +44,7 @@ SM9_GenMSignPubKey(&msk, &mspk);  // 生成主签名公钥
 
 2.2 启动签名验签lib
 
-gg = SM9_Set_Sign(mspk.x1, mspk.x2, mspk.y1, mspk.x2, NULL); // 启动签名lib
+gg = SM9_Set_Sign(mspk.x1, mspk.x2, mspk.y1, mspk.y2, NULL); // 启动签名lib
 
 第二次启动时候可以使用上述生成的gg
 
