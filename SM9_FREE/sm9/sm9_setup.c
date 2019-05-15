@@ -314,6 +314,11 @@ unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char*
         zzn2_from_bigs(_MIPP_ x, y, &yy);
     
         if(!ecn2_set(_MIPP_ &xx, &yy, &ppG2)){
+            mirkill(x);
+            mirkill(y);
+            zzn2_kill(_MIPP_ &xx);
+            zzn2_kill(_MIPP_ &yy);
+            CloseMiracl(_MIPPO_);
             return NULL;
         };
     
