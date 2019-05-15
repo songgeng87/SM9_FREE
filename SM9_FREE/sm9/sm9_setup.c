@@ -313,7 +313,9 @@ unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char*
         bytes_to_big(_MIPP_ sm9len, (char *)y1, y);
         zzn2_from_bigs(_MIPP_ x, y, &yy);
     
-        ecn2_set(_MIPP_ &xx, &yy, &ppG2);
+        if(!ecn2_set(_MIPP_ &xx, &yy, &ppG2)){
+            return NULL;
+        };
     
         sm9sign = ecap(_MIPP_ &ppG2, &p1G1, sm9t, &sm9X, &gGt);
         gc = (unsigned char*)malloc(sizeof(unsigned char)*12*sm9len);
@@ -579,7 +581,6 @@ BOOL SM9_GenMSignPubKey(SM9_MSK *msk, SM9_MSPK *mspk){
     
     redc(_MIPP_ ppG2.y.b, mk);
     big_to_bytes(_MIPP_ mspk->secLevel, mk, (char *)mspk->y1, TRUE);
-    
     
     mirkill(mk);
     CloseMiracl(_MIPPO_);

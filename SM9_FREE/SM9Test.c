@@ -33,7 +33,8 @@ int main(int argc, char **argv)
     unsigned char rb[32] = {"\x00\x01\x8B\x98\xC4\x4B\xEF\x9F\x85\x37\xFB\x7D\x07\x1B\x2C\x92\x8B\x3B\xC6\x5B\xD3\xD6\x9E\x1E\xEE\x21\x35\x64\x90\x56\x34\xFE"};
     
     time_t start,end;
-   
+    int res;
+    
     unsigned char *gg;
     
     unsigned char AS1[32];
@@ -43,6 +44,20 @@ int main(int argc, char **argv)
     unsigned char BS1[32];
     unsigned char BS2[32];
     unsigned char BSK[16];
+
+
+    
+//============独立验证时用到的参数==========
+    unsigned char x1[32] = {"\x0f\xbd\x02\x40\x35\xb4\xca\x2f\x94\x14\x4f\xdf\x33\x3b\xf8\xe1\x81\x74\x7c\x8d\xd8\x5d\xe4\x12\xad\xc7\x18\x18\x98\x72\x43\x27"};
+    unsigned char x2[32] = {"\x13\x2d\x39\x44\x38\x7b\x63\x1e\xe4\xb0\x55\x89\x9f\x6c\xfe\x42\x8f\xb9\xfc\x9f\xa2\x75\x68\x9f\xeb\x36\xbe\x2b\x60\x21\xea\xbe"};
+    unsigned char y1[32] = {"\x07\x81\x20\x17\xdb\x06\x91\xd3\x43\x11\x36\x83\x21\x19\xe0\xe1\x94\x4e\x85\x5a\xed\xfc\xa7\x10\xed\xd1\x46\x6e\x69\x01\x8e\xa1"};
+    unsigned char y2[32] = {"\x89\xf9\xf0\x0f\x5e\x05\x10\x6c\xb3\x4f\x60\x0f\xd9\x48\x92\x4b\x87\x24\x7b\xde\x11\xdf\x34\x01\x3d\xb6\xb9\x54\xbb\xf1\x9a\x55"};
+    
+    unsigned char h[32] = {"\xa1\xc3\xa6\xce\x30\x90\xea\x0d\xbd\x07\xe2\x1b\xcb\xdb\x43\x40\x4b\x80\x98\xf1\x90\x4d\xd6\xe7\x28\x3c\x7d\xfc\xdb\x23\x65\x91"};
+    unsigned char xs[32] = {"\x2f\x5f\xe6\x33\xb6\x04\x16\x76\xfe\x77\x0d\x3f\xd3\x09\x6e\x0b\x64\xb0\x01\x0e\x1d\xa5\x50\x96\x5c\xd1\x94\xad\x53\x51\xa4\x98"};
+    unsigned char ys[32] = {"\x51\x2b\x48\xf2\xae\xde\x4b\x10\xef\x25\xca\x58\x46\x49\x93\x8b\xfc\xd6\x3e\xe8\xb4\x8f\xbb\x86\xeb\x82\xa8\x22\x42\x97\x63\x14"};
+    
+    
     //如下可以使用SM9 第五部分 指定的曲线类型和主密钥初始化系统
     //也可以使用自定义曲线
     //
@@ -50,16 +65,15 @@ int main(int argc, char **argv)
 // ========================================================
     SM9_MSK msk = SM9_MSK_New(32, cks);  // 申明一个签名主密钥
     SM9_MSPK mspk = SM9_MSPK_New(32);   //申明一个主签名公钥
-    
+
     SM9_GenMSignPubKey(&msk, &mspk);  // 生成签名主公钥
     
-    gg = SM9_Set_Sign(mspk.x1, mspk.x2, mspk.y1, mspk.x2, NULL); // 启动签名lib
+    gg = SM9_Set_Sign(mspk.x1, mspk.x2, mspk.y1, mspk.y2, NULL); // 启动签名lib
     
     SM9_Set_Sign(NULL, NULL, NULL, NULL, gg);
     
     SM9_PK pk = SM9_PK_New(5, id);       // 申明一个签名公钥
     SM9_SSK sk = SM9_SSK_New(32);            // 申明一个签名私钥
-   
     
     SM9_GenSignSecKey(&sk, &pk, &msk); // 由公钥（id）生成签名私钥
     
@@ -68,16 +82,14 @@ int main(int argc, char **argv)
 //===============signature test===============
       //使用私钥sk和随机数ran，对消息mes签名
     time(&start);
-    int res;
+ 
     for(int i=0;i<TEST;i++){
         SM9_Signature(msg, 20, rand, &sk, &sign);
     }
     time(&end);
     
     printf("sign %d time is %ld sec\n",TEST, end-start);
-    
-    
-    
+ 
     time(&start);
     for(int i=0;i<TEST;i++){// 验证函数
         res = SM9_Verify(msg, 20, &sign, &pk, NULL);
@@ -86,7 +98,32 @@ int main(int argc, char **argv)
     
     time(&end);
     printf("verify %d time is %ld sec\n",TEST, end-start);
- //===============encryption test===============
+ 
+//===============independent verify test===============
+    SM9_MSPK inmspk = SM9_MSPK_New(32);
+    SM9_Sign insign = SM9_Sign_New(32);
+    SM9_PK inpk = SM9_PK_New(5, id);
+    
+    inmspk.secLevel =32;
+    inmspk.x1 = x1;
+    inmspk.x2 = x2;
+    inmspk.y1 = y1;
+    inmspk.y2 = y2;
+    
+    gg = SM9_Set_Sign(inmspk.x1, inmspk.x2, inmspk.y1, inmspk.y2, NULL); // 启动签名lib
+    
+    insign.h = h;
+    insign.xs = xs;
+    insign.ys = ys;
+    int inres;
+    inres = SM9_Verify(msg, 20, &insign, &inpk, NULL);
+    if (inres) {
+        printf("verify error = %d\n",inres);
+    }else{
+        printf("verify success! \n");
+    }
+    
+//===============encryption test===============
     SM9_MSK esk = SM9_MSK_New(32, eks);  // 申明一个加密主密钥
     SM9_MCPK mcpk = SM9_MCPK_New(32);   //申明一个主加密公钥
     SM9_GenMEncryptPubKey(&esk, &mcpk); // 生成加密主公钥

@@ -14,7 +14,7 @@ void print_hex(unsigned char *pbuf, int len)
 	printf("==================\n");
 
 	if (len==0){
-        printf("0x00\n");
+        printf("\\x00\n");
         return ;
     }
     
@@ -22,7 +22,7 @@ void print_hex(unsigned char *pbuf, int len)
     {
         if( i && i%16==0 )
             printf("\n");
-        printf("0x%02x,", pbuf[i]);
+        printf("\\x%02x", pbuf[i]);
     }
     printf("\n");
     return ;
