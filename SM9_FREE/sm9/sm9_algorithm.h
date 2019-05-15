@@ -232,37 +232,37 @@ void SM9_Send_Free(SM9_Send *s);
 //根据主私钥生成主签名公钥
 //返回码
 //0 生成成功
-//1 系统为初始化
+//1 系统未初始化
 int SM9_GenMSignPubKey(SM9_MSK *msk, SM9_MSPK *mspk);
 
 //根据主私钥生成主加解密公钥
 //返回码
 //0 生成成功
-//1 系统为初始化
+//1 系统未初始化
 int SM9_GenMEncryptPubKey(SM9_MSK *msk, SM9_MCPK *mcpk);
 
 //根据主私钥生成主密钥协商公钥
 //返回码
 //0 生成成功
-//1 系统为初始化
+//1 系统未初始化
 int SM9_GenMKeyExchangePubKey(SM9_MSK *msk, SM9_MKPK *mcpk);
 
 //根据主私钥，用户公钥生成用户签名私钥
 //返回码
 //0 生成成功
-//1 系统为初始化
+//1 系统未初始化
 int SM9_GenSignSecKey(SM9_SSK *sk, SM9_PK *pk,SM9_MSK *msk);
 
 //根据主私钥，用户公钥生成用户加解密私钥
 //返回码
 //0 生成成功
-//1 系统为初始化
+//1 系统未初始化
 int SM9_GenEncryptSecKey(SM9_CSK *sk, SM9_PK *pk,SM9_MSK *msk);
 
 //根据主私钥，用户公钥生成用户密钥协商私钥
 //返回码
 //0 生成成功
-//1 系统为初始化
+//1 系统未初始化
 int SM9_GenKeyExchangeSecKey(SM9_KSK *sk, SM9_PK *pk,SM9_MSK *msk);
 
 
