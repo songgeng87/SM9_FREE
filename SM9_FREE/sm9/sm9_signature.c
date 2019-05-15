@@ -18,7 +18,7 @@ BOOL SM9_GenSignSecKey(SM9_SSK *sk, SM9_PK *pk,SM9_MSK *msk){
     ecn *ppk;
     if (!sm9sign){
     //    printf("the sm9 sign lib is not init, please run SM9_SET_SIGN function\n");
-        return sm9sign;
+        return LIB_NOT_INIT;
     }
     
     
@@ -55,7 +55,7 @@ BOOL SM9_GenSignSecKey(SM9_SSK *sk, SM9_PK *pk,SM9_MSK *msk){
     epoint_free(ppk);
     free(id);
     CloseMiracl(_MIPPO_);
-    return TRUE;
+    return 0;
 }
 
 int SM9_Signature(unsigned char* mes,unsigned int meslen,unsigned char* ran,SM9_SSK *sk, SM9_Sign *sign){

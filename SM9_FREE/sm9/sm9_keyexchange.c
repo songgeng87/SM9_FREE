@@ -18,7 +18,7 @@ BOOL SM9_GenKeyExchangeSecKey(SM9_KSK *sk, SM9_PK *pk,SM9_MSK *msk){
 	big ssk,k;
 	if (!sm9keyexchange){
     //    printf("the sm9 keyexchange lib is not init, please run SM9_SET_KYEEXCHANGE function\n");
-        return 1;
+        return LIB_NOT_INIT;
     }
     mr_mip = GenMiracl(sk->secLevel);
     id = (unsigned char *)malloc(sizeof(unsigned char)*(pk->keylen+1));
@@ -61,7 +61,7 @@ BOOL SM9_GenKeyExchangeSecKey(SM9_KSK *sk, SM9_PK *pk,SM9_MSK *msk){
     mirkill(ssk);
     free(id);
     CloseMiracl(_MIPPO_);
-    return TRUE;
+    return 0;
 }
 
 int SM9_SendStep(unsigned char *ran, SM9_PK *pk, SM9_Send *se){

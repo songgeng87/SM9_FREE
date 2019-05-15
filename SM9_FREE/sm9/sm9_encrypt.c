@@ -23,7 +23,7 @@ BOOL SM9_GenEncryptSecKey(SM9_CSK *sk, SM9_PK *pk,SM9_MSK *msk){
     ecn2 psk;
     if (!sm9encrypt){
     //    printf("the sm9 encrypt lib is not init, please run SM9_SET_ENCRYPT function\n");
-        return sm9encrypt;
+        return LIB_NOT_INIT;
     }
     mr_mip = GenMiracl(sk->secLevel);
     id = (unsigned char *)malloc(sizeof(unsigned char)*(pk->keylen+1));
@@ -67,7 +67,7 @@ BOOL SM9_GenEncryptSecKey(SM9_CSK *sk, SM9_PK *pk,SM9_MSK *msk){
     mirkill(ssk);
     free(id);
     CloseMiracl(_MIPPO_);
-    return TRUE;
+    return 0;
 }
 
 

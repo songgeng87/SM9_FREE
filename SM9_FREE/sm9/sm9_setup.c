@@ -162,7 +162,7 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(y);
             
             CloseMiracl(_MIPPO_);
-            return 1;
+            return NOT_ON_G1;
         }
         
         bytes_to_big(_MIPP_ sm9len, (char *)xq1, x);
@@ -196,7 +196,7 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(y);
             
             CloseMiracl(_MIPPO_);
-            return 2;
+            return NOT_ON_G2;
         }
         set_frobenius_constant(_MIPP_ &sm9X);
     }else{
@@ -239,7 +239,7 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(y);
             
             CloseMiracl(_MIPPO_);
-            return 1;
+            return NOT_ON_G1;
         }
         
         bytes_to_big(_MIPP_ sm9len, (char *)cxq1, x);
@@ -273,7 +273,7 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
             mirkill(y);
             
             CloseMiracl(_MIPPO_);
-            return 2;
+            return NOT_ON_G2;
         }
         bytes_to_big(_MIPP_ sm9len, sm9Xx, x);
         zzn2_from_big(_MIPP_ x, &sm9X);
@@ -285,7 +285,7 @@ int SM9_Init(unsigned int curve, BOOL TWIST_TYPE,unsigned int seclevel, unsigned
     
     CloseMiracl(_MIPPO_);
     sm9init = TRUE;
-    return sm9init;
+    return 0;
 }
 
 unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char* y1, unsigned char* y2, unsigned char* gGtchar){
@@ -558,7 +558,7 @@ BOOL SM9_GenMSignPubKey(SM9_MSK *msk, SM9_MSPK *mspk){
     big mk;
 	if (!sm9init){
     //    printf("the sm9 lib is not init, please run SM9_INIT function");
-        return sm9init;
+        return !sm9init;
     }
     mr_mip = GenMiracl(mspk->secLevel);
 	mk = mirvar(_MIPP_ 0);
@@ -583,7 +583,7 @@ BOOL SM9_GenMSignPubKey(SM9_MSK *msk, SM9_MSPK *mspk){
     
     mirkill(mk);
     CloseMiracl(_MIPPO_);
-    return TRUE;
+    return 0;
 }
 
 BOOL SM9_GenMEncryptPubKey(SM9_MSK *msk, SM9_MCPK *mcpk){
@@ -591,7 +591,7 @@ BOOL SM9_GenMEncryptPubKey(SM9_MSK *msk, SM9_MCPK *mcpk){
     big mk;
 	if (!sm9init){
     //    printf("the sm9 lib is not init, please run SM9_INIT function");
-        return sm9init;
+        return !sm9init;
     }
     mr_mip = GenMiracl(mcpk->secLevel);
 	mk = mirvar(_MIPP_ 0);
@@ -607,7 +607,7 @@ BOOL SM9_GenMEncryptPubKey(SM9_MSK *msk, SM9_MCPK *mcpk){
     
     mirkill(mk);
     CloseMiracl(_MIPPO_);
-    return TRUE;
+    return 0;
 }
 
 BOOL SM9_GenMKeyExchangePubKey(SM9_MSK *msk, SM9_MKPK *mcpk){
@@ -616,7 +616,7 @@ BOOL SM9_GenMKeyExchangePubKey(SM9_MSK *msk, SM9_MKPK *mcpk){
     
     if (!sm9init){
     //    printf("the sm9 lib is not init, please run SM9_INIT function");
-        return sm9init;
+        return !sm9init;
     }
     mr_mip = GenMiracl(mcpk->secLevel);
     mk = mirvar(_MIPP_ 0);
@@ -633,7 +633,7 @@ BOOL SM9_GenMKeyExchangePubKey(SM9_MSK *msk, SM9_MKPK *mcpk){
     
     mirkill(mk);
     CloseMiracl(_MIPPO_);
-    return TRUE;
+    return 0;
 }
 
 

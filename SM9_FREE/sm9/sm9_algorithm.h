@@ -136,8 +136,8 @@ typedef struct sm9_sender_st {
 //@TWIST_TYPE 椭圆曲线twist类型，标准为MR_SEXTIC_M
 //返回值
 //0 设置成功
-//1 G1生成元配置错误
-//2 G2生成元配置错误
+//2 G1生成元配置错误
+//3 G2生成元配置错误
 int SM9_Init(unsigned int curve, int TWIST_TYPE, unsigned int seclevel,unsigned char* t, unsigned char* q, unsigned char* a, unsigned char* b, unsigned char* n, unsigned char* xp1, unsigned char* yp1, unsigned char* xq1, unsigned char* xq2, unsigned char* yq1, unsigned char* yq2);
 
 
@@ -230,17 +230,39 @@ void SM9_Cipher_Free(SM9_Cipher *c);
 void SM9_Send_Free(SM9_Send *s);
 
 //根据主私钥生成主签名公钥
+//返回码
+//0 生成成功
+//1 系统为初始化
 int SM9_GenMSignPubKey(SM9_MSK *msk, SM9_MSPK *mspk);
+
 //根据主私钥生成主加解密公钥
+//返回码
+//0 生成成功
+//1 系统为初始化
 int SM9_GenMEncryptPubKey(SM9_MSK *msk, SM9_MCPK *mcpk);
+
 //根据主私钥生成主密钥协商公钥
+//返回码
+//0 生成成功
+//1 系统为初始化
 int SM9_GenMKeyExchangePubKey(SM9_MSK *msk, SM9_MKPK *mcpk);
 
 //根据主私钥，用户公钥生成用户签名私钥
+//返回码
+//0 生成成功
+//1 系统为初始化
 int SM9_GenSignSecKey(SM9_SSK *sk, SM9_PK *pk,SM9_MSK *msk);
+
 //根据主私钥，用户公钥生成用户加解密私钥
+//返回码
+//0 生成成功
+//1 系统为初始化
 int SM9_GenEncryptSecKey(SM9_CSK *sk, SM9_PK *pk,SM9_MSK *msk);
+
 //根据主私钥，用户公钥生成用户密钥协商私钥
+//返回码
+//0 生成成功
+//1 系统为初始化
 int SM9_GenKeyExchangeSecKey(SM9_KSK *sk, SM9_PK *pk,SM9_MSK *msk);
 
 
@@ -250,6 +272,12 @@ int SM9_GenKeyExchangeSecKey(SM9_KSK *sk, SM9_PK *pk,SM9_MSK *msk);
 //@ran      the random number for sign (must be 32 char, if it's length less than 32 , plese add 0x00 at the first)
 //@sk       the secretkey for signature
 //@sign     the signature
+
+// 返回码
+//0 计算成功
+//1 没有完成预配置，库没有启动
+//2 G1生成元配置错误
+//3 G2生成元配置错误
 int SM9_Signature(unsigned char* mes,unsigned int meslen,unsigned char* ran,SM9_SSK *sk, SM9_Sign *sign);
 
 //@mes      the message for signature
@@ -257,6 +285,12 @@ int SM9_Signature(unsigned char* mes,unsigned int meslen,unsigned char* ran,SM9_
 //@sing     the signature
 //@pk       the public key(id) of the signer
 //@mpk      the master public key for signtuer, please set it as NULL
+
+// 返回码
+//0 计算成功
+//1 没有完成预配置，库没有启动
+//2 G1生成元配置错误
+//3 G2生成元配置错误
 int SM9_Verify(unsigned char *mes,unsigned int meslen, SM9_Sign *sign, SM9_PK *pk, SM9_MSPK *mpk);
 //=============For Encryption algorithm=================
 //
@@ -266,6 +300,12 @@ int SM9_Verify(unsigned char *mes,unsigned int meslen, SM9_Sign *sign, SM9_PK *p
 //@ran      the random number for encrypt (must be 32 char, if it's length less than 32 , plese add 0x00 at the first)
 //@pk       the public key(id) for the receiver
 //@cip      the ciphertext
+
+// 返回码
+//0 计算成功
+//1 没有完成预配置，库没有启动
+//2 G1生成元配置错误
+//3 G2生成元配置错误
 int SM9_Encrypt(unsigned char *mes, unsigned int meslen, unsigned int KDF_ID, unsigned char *ran, SM9_PK *pk, SM9_Cipher *cip);
 
 //@pk       the public key(id) for the receiver
@@ -274,12 +314,24 @@ int SM9_Encrypt(unsigned char *mes, unsigned int meslen, unsigned int KDF_ID, un
 //@cip      the ciphertext
 //@mes      the plaintext
 //@meslen   the length of the plaintext
+
+// 返回码
+//0 计算成功
+//1 没有完成预配置，库没有启动
+//2 G1生成元配置错误
+//3 G2生成元配置错误
 int SM9_Decrypt(SM9_PK *pk, unsigned int KDF_ID, SM9_CSK *sk, SM9_Cipher *cip,unsigned char *mes,unsigned int *meslen);
 //=============For KeyExchange algorithn================
 
 //@ran      the random number for sendstep (must be 32 char, if it's length less than 32 , plese add 0x00 at the first)
 //@pk       the publickey(id) of the receiver
 //@se       the send in the first step
+
+// 返回码
+//0 计算成功
+//1 没有完成预配置，库没有启动
+//2 G1生成元配置错误
+//3 G2生成元配置错误
 int SM9_SendStep(unsigned char *ran, SM9_PK *pk, SM9_Send *se);
 
 //@ran      the random number used in sendstep (must be 32 char, if it's length less than 32 , plese add 0x00 at the first)
@@ -293,6 +345,14 @@ int SM9_SendStep(unsigned char *ran, SM9_PK *pk, SM9_Send *se);
 //@S2       send S2 to receiver for the checkstep
 //@SK       the exchanged key
 //@SorR     set AKE_SENDER if you are the sender party, and AKE_RECEIVER if you are the receiver party
+
+
+
+// 返回码
+//0 计算成功
+//1 没有完成预配置，库没有启动
+//2 G1生成元配置错误
+//3 G2生成元配置错误
 int SM9_ReceiveStep(unsigned char *ran,SM9_Send *S, SM9_Send *R,SM9_PK *SP, SM9_PK *RP, SM9_KSK *ksk, unsigned int sklen,unsigned char *S1, unsigned char *S2, unsigned char *SK,unsigned int SorR);
 
 //对比R与G是否一致
