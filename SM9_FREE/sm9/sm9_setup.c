@@ -331,30 +331,31 @@ unsigned char* SM9_Set_Sign(unsigned char* x1, unsigned char* x2, unsigned char*
     zzn2_mirvar(_MIPP_ &xx);
     zzn2_mirvar(_MIPP_ &yy);
     
+    bytes_to_big(_MIPP_ sm9len, (char *)x2, x);
+    bytes_to_big(_MIPP_ sm9len, (char *)x1, y);
+    zzn2_from_bigs(_MIPP_ x, y, &xx);
+    
+    bytes_to_big(_MIPP_ sm9len, (char *)y2, x);
+    bytes_to_big(_MIPP_ sm9len, (char *)y1, y);
+    zzn2_from_bigs(_MIPP_ x, y, &yy);
+    
+    if(!ecn2_set(_MIPP_ &xx, &yy, &ppG2)){
+        mirkill(x);
+        mirkill(y);
+        zzn2_kill(_MIPP_ &xx);
+        zzn2_kill(_MIPP_ &yy);
+        CloseMiracl(_MIPPO_);
+        return NULL;
+    };
+    
     if(gGtchar == NULL){
-        bytes_to_big(_MIPP_ sm9len, (char *)x2, x);
-        bytes_to_big(_MIPP_ sm9len, (char *)x1, y);
-        zzn2_from_bigs(_MIPP_ x, y, &xx);
-    
-        bytes_to_big(_MIPP_ sm9len, (char *)y2, x);
-        bytes_to_big(_MIPP_ sm9len, (char *)y1, y);
-        zzn2_from_bigs(_MIPP_ x, y, &yy);
-    
-        if(!ecn2_set(_MIPP_ &xx, &yy, &ppG2)){
-            mirkill(x);
-            mirkill(y);
-            zzn2_kill(_MIPP_ &xx);
-            zzn2_kill(_MIPP_ &yy);
-            CloseMiracl(_MIPPO_);
-            return NULL;
-        };
-    
         sm9sign = ecap(_MIPP_ &ppG2, &p1G1, sm9t, &sm9X, &gGt);
-        gc = (unsigned char*)malloc(sizeof(unsigned char)*12*sm9len);
+        gc = (unsigned char*)malloc(sizeof(unsigned char)*(12*sm9len));
         zzn12_tochar(_MIPP_ &gGt, gc,sm9len);
     }else{
         zzn12_fromchar(_MIPP_ &gGt, gGtchar,sm9len);
         sm9sign = TRUE;
+        gc = gGtchar;
     }
     mirkill(x);
     mirkill(y);
@@ -381,23 +382,25 @@ unsigned char* SM9_Set_Encrypt(unsigned char* x, unsigned char* y, unsigned char
 
     a = mirvar(_MIPP_ 0);
     b = mirvar(_MIPP_ 0);
+    
+    bytes_to_big(_MIPP_ sm9len, (char *) x, a);
+    bytes_to_big(_MIPP_ sm9len, (char *) y, b);
+    
+    if(!epoint_set(_MIPP_ a, b, 1, &ppG1)){
+        mirkill(a);
+        mirkill(b);
+        CloseMiracl(_MIPPO_);
+        return NULL;
+    }
+    
     if (eGtchar == NULL){
-        bytes_to_big(_MIPP_ sm9len, (char *) x, a);
-        bytes_to_big(_MIPP_ sm9len, (char *) y, b);
-    
-        if(!epoint_set(_MIPP_ a, b, 1, &ppG1)){
-            mirkill(a);
-            mirkill(b);
-            CloseMiracl(_MIPPO_);
-            return NULL;
-        }
-    
         sm9encrypt = ecap(_MIPP_ &p2G2, &ppG1, sm9t, &sm9X, &eGt);
         gc = (unsigned char*)malloc(sizeof(unsigned char)*12*sm9len);
         zzn12_tochar(_MIPP_ &eGt, gc,sm9len);
     }else{
-        zzn12_fromchar(_MIPP_ &eGt, gc,sm9len);
+        zzn12_fromchar(_MIPP_ &eGt, eGtchar,sm9len);
         sm9encrypt = TRUE;
+        gc = eGtchar;
     }
     mirkill(a);
     mirkill(b);
@@ -420,22 +423,25 @@ unsigned char* SM9_Set_KeyExchange(unsigned char* x, unsigned char* y,unsigned c
     mr_mip = GenMiracl(sm9len);
     a = mirvar(_MIPP_ 0);
     b = mirvar(_MIPP_ 0);
+    
+    bytes_to_big(_MIPP_ sm9len, (char *) x, a);
+    bytes_to_big(_MIPP_ sm9len, (char *) y, b);
+    
+    if (!epoint_set(_MIPP_ a, b, 1, &keG1)){
+        mirkill(a);
+        mirkill(b);
+        CloseMiracl(_MIPPO_);
+        return NULL;
+    }
     if (kGtchar == NULL){
-        bytes_to_big(_MIPP_ sm9len, (char *) x, a);
-        bytes_to_big(_MIPP_ sm9len, (char *) y, b);
         
-        if (!epoint_set(_MIPP_ a, b, 1, &keG1)){
-            mirkill(a);
-            mirkill(b);
-            CloseMiracl(_MIPPO_);
-            return NULL;
-        }
         sm9keyexchange = ecap(_MIPP_ &p2G2, &keG1, sm9t, &sm9X, &kGt);
         gc = (unsigned char*)malloc(sizeof(unsigned char)*12*sm9len);
         zzn12_tochar(_MIPP_ &kGt, gc,sm9len);
     }else{
-        zzn12_fromchar(_MIPP_ &kGt, gc,sm9len);
+        zzn12_fromchar(_MIPP_ &kGt, kGtchar,sm9len);
         sm9keyexchange = TRUE;
+        gc = kGtchar;
     }
     mirkill(a);
     mirkill(b);

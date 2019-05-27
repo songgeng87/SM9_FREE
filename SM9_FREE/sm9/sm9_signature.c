@@ -263,7 +263,7 @@ int SM9_Verify(unsigned char *mes,unsigned int meslen, SM9_Sign *sign, SM9_PK *p
     h2 = Hfun(_MIPP_ (char *)mw, mwlen, sign->secLevel, 2);
     
     re = mr_compare(h2, h);
-    if (re!=0) re=VERIFY_ERROR_2;
+    if (re!=0) re=VERIFY_ERROR_3;
     mirkill(h);
     mirkill(h1);
     mirkill(h2);

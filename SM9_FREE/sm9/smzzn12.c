@@ -593,6 +593,7 @@ void zzn12_tochar(_MIPD_ zzn12* w,unsigned char *c,unsigned int bInt){
     big_to_bytes(_MIPP_ bInt, m, (char *)c+hlen, TRUE);
     hlen += bInt;
     mirkill(m);
+
 }
 
 void zzn12_fromchar(_MIPD_ zzn12* w,unsigned char *c,unsigned int bInt){
@@ -646,5 +647,7 @@ void zzn12_fromchar(_MIPD_ zzn12* w,unsigned char *c,unsigned int bInt){
     nres(_MIPP_ m, w->a.a.a);
     hlen += bInt;
     
+    w->miller = FALSE;
+    w->unitary = TRUE;
     mirkill(m);
 }

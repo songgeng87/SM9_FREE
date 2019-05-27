@@ -76,9 +76,6 @@ int main(int argc, char **argv)
         printf("init sign lib error\n");
         return 1;
     }
-    
-    SM9_Set_Sign(NULL, NULL, NULL, NULL, gg);
-    
     SM9_PK pk = SM9_PK_New(5, id);       // 申明一个签名公钥
     SM9_SSK sk = SM9_SSK_New(32);            // 申明一个签名私钥
     

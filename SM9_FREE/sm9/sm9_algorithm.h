@@ -28,9 +28,10 @@
 #define SIGN_ZERO_ERROR 4
 #define VERIFY_ERROR_1  5
 #define VERIFY_ERROR_2  6
-#define PAIRING_ERROR   7
-#define BLOCK_ERROR     8
-#define DECRYPT_ERROR   9
+#define VERIFY_ERROR_3  7
+#define PAIRING_ERROR   8
+#define BLOCK_ERROR     9
+#define DECRYPT_ERROR   10
 
 /* define Twist type */
 
