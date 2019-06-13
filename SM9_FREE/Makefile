@@ -1,5 +1,5 @@
 SHELL = /bin/sh
-CC = gcc
+CC = gcc -std=c99
 AR = ar
 OBJ = build
 
@@ -24,7 +24,7 @@ $(LIB_TARGET) : $(SM9_OBJ)
 test : $(LIB_TARGET) SM9Test.o 
 SM9Test.o: SM9Test.c
 	$(CC) -c SM9Test.c -o SM9Test.o 
-	$(CC) $(LIB_TARGET) SM9Test.o -o test
+	$(CC) $(LIB_TARGET) SM9Test.o -o test 
 	rm -f ./*.o
 
 clean:
