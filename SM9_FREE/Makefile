@@ -4,7 +4,6 @@ AR = ar
 OBJ = build
 
 CFLAG = -O2 -W -Wall
-
 INCLUDE_PATH = -I.
 LIB_TARGET = ./libsm9.a
 
@@ -24,7 +23,7 @@ $(LIB_TARGET) : $(SM9_OBJ)
 test : $(LIB_TARGET) SM9Test.o 
 SM9Test.o: SM9Test.c
 	$(CC) -c SM9Test.c -o SM9Test.o 
-	$(CC) $(LIB_TARGET) SM9Test.o -o test 
+	$(CC) $(LIB_TARGET) SM9Test.o -o test
 	rm -f ./*.o
 
 clean:

@@ -6,7 +6,7 @@
 #include "sm9/sm9_algorithm.h"
 #include "sm9/print_out.h"
 
-#define TEST 1
+#define TEST 100
 
 int main(int argc, char **argv)
 {

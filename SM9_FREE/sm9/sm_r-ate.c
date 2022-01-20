@@ -10,6 +10,7 @@
 #include "../miracl/miracl.h"
 
 #include "print_out.h"
+#include "sm9_utils.h"
 //
 // R-ate Pairing Code
 //

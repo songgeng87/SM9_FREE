@@ -77,4 +77,7 @@ int MAC(unsigned char* key, unsigned int keylen, unsigned char* msg, unsigned in
 //输出 0
 int xorAlgor( unsigned char *bufIn, int ilen, unsigned char *bufKey, unsigned char * bufOut);
 
+
+BOOL ecap(_MIPD_ ecn2 *P,ecn *Q,big x,zzn2 *X,zzn12 *r);
+void set_frobenius_constant(_MIPD_ zzn2 *x);
 #endif /* sm9_parameters_h */

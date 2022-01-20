@@ -6,6 +6,7 @@
 //  Copyright © 2017年 宋赓. All rights reserved.
 //
 #include "sm3.h"
+#include <string.h>
 //11sm3.c
 
 

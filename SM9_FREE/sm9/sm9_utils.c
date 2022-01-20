@@ -5,7 +5,8 @@
 //  Created by 宋赓 on 2017/3/25.
 //  Copyright © 2017年 宋赓. All rights reserved.
 //
-
+#include <stdlib.h>
+#include <string.h>
 #include "sm9_utils.h"
 #include "sm3.h"
 

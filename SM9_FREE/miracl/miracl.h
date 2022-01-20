@@ -1198,7 +1198,8 @@ extern void gcd2(_MIPT_ big,big,big);
 extern int degree2(big);
 
 /* zzn2 stuff */
-
+extern void zzn2_mirvar(_MIPD_ zzn2 *w);
+extern void zzn2_kill(_MIPD_ zzn2*w);
 extern BOOL zzn2_iszero(zzn2 *);
 extern BOOL zzn2_isunity(_MIPT_ zzn2 *);
 extern void zzn2_from_int(_MIPT_ int,zzn2 *);
@@ -1214,6 +1215,7 @@ extern void zzn2_mul(_MIPT_ zzn2 *,zzn2 *,zzn2 *);
 extern void zzn2_sqr(_MIPT_ zzn2 *,zzn2 *);
 extern void zzn2_inv(_MIPT_ zzn2 *);
 extern void zzn2_timesi(_MIPT_ zzn2 *);
+extern void zzn2_pow(_MIPD_ zzn2 *x, big e, zzn2*w);
 extern void zzn2_powl(_MIPT_ zzn2 *,big,zzn2 *);
 extern void zzn2_from_zzns(big,big,zzn2 *);
 extern void zzn2_from_bigs(_MIPT_ big,big,zzn2 *);
@@ -1265,7 +1267,8 @@ extern void zzn3_imul(_MIPT_ zzn3 *,int,zzn3 *);
 extern BOOL zzn3_compare(zzn3 *,zzn3 *);
 
 /* zzn4 stuff */
-
+extern void zzn4_mirvar(_MIPD_ zzn4 *w);
+extern void zzn4_kill(_MIPD_ zzn4 *w);
 extern BOOL zzn4_iszero(zzn4 *);
 extern BOOL zzn4_isunity(_MIPT_ zzn4 *);
 extern void zzn4_from_int(_MIPT_ int,zzn4 *);
@@ -1295,7 +1298,8 @@ extern void zzn4_lmul(_MIPT_ zzn4 *,big,zzn4 *);
 extern BOOL zzn4_compare(zzn4 *,zzn4 *);
 
 /* ecn2 stuff */
-
+extern void ecn2_mirvar(_MIPD_ ecn2* q);
+extern void ecn2_kill(_MIPD_ ecn2* q);
 extern BOOL ecn2_iszero(ecn2 *);
 extern void ecn2_copy(ecn2 *,ecn2 *);
 extern void ecn2_zero(ecn2 *);
