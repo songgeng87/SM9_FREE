@@ -22,8 +22,8 @@ $(LIB_TARGET) : $(SM9_OBJ)
 
 test : $(LIB_TARGET) SM9Test.o 
 SM9Test.o: SM9Test.c
-	$(CC) -c SM9Test.c -o SM9Test.o 
-	$(CC) $(LIB_TARGET) SM9Test.o -o test
+	#$(CC) -c SM9Test.c -o SM9Test.o 
+	$(CC) SM9Test.c -L. -l sm9 -I sm9/ -o test
 	rm -f ./*.o
 
 clean:
